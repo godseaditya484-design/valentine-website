@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine’s Day ❤️</title>
+
+<!-- Confetti Library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #ff4d6d, #ff8fa3);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+#startBtn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255,0,0,0.8);
+}
+
+#content {
+    display: none;
+    animation: fadeIn 2s ease-in-out;
+}
+
+img {
+    width: 220px;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<button id="startBtn" onclick="startLove()">Tap for Love ❤️</button>
+
+<div id="content">
+    <h1>Happy Valentine’s Day ❤️</h1>
+
+    <img src="https://i.imgur.com/O7MZJ7F.png" alt="Flower Bouquet">
+
+    <h2>I Love You 🌹</h2>
+
+    <p>
+        You are the most beautiful part of my life.  
+        Every smile of yours makes my world brighter and every moment with you
+        feels like a blessing. I am so grateful to have you, to love you,
+        and to call you mine.  
+        Today and always, my heart belongs to you ❤️
+    </p>
+</div>
+
+<script>
+function startLove() {
+    document.getElementById("startBtn").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+    // Confetti burst
+    confetti({
+        particleCount: 300,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+    // Continuous soft confetti
+    let duration = 3 * 1000;
+    let end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 5,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 5,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    })();
+}
+</script>
+
+</body>
+</html>
